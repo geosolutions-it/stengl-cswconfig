@@ -1,0 +1,60 @@
+# https://travis-ci.org/evonove/django-oauth-toolkit
+sudo: required
+language: python
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $TRAVIS_BUILD_DIR/.tox
+
+matrix:
+  fast_finish: true
+  include:
+    - python: 2.7
+      env:
+          - TOXENV=py27-django111
+    - python: 2.7
+      env:
+          - TOXENV=flake8
+    - python: 3.5
+      env:
+          - TOXENV=py35-django111
+    - python: 3.5
+      env:
+          - TOXENV=py35-django20
+    - python: 3.6
+      env:
+          - TOXENV=py36-django111
+    - python: 3.6
+      env:
+          - TOXENV=py36-django20
+    - python: 3.6
+      env:
+          - TOXENV=py36-djangomaster
+    - python: 3.6
+      env:
+          - TOXENV=flake8
+    - python: 3.6
+      env:
+          - TOXENV=docs
+  allow_failures:
+    - python: 3.6
+      env:
+          - TOXENV=py36-djangomaster
+    - python: 3.6
+      env:
+          - TOXENV=docs
+
+install:
+  - sudo apt-get -qq -y update
+  - sudo apt-get install -y libgdal1h python-gdal gdal-bin spatialite-bin
+  - sudo apt-get install -y python-imaging python-lxml python-pyproj python-shapely python-nose python-httplib2 python-httplib2 gettext
+  - sudo apt-get install -y python-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev libjpeg-dev libpq-dev libgdal-dev git default-jdk
+  # - pip install pygdal==`gdal-config --version`
+  - pip install coveralls tox
+
+script:
+  - tox
+
+after_script:
+  - coveralls

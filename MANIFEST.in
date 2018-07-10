@@ -1,0 +1,3 @@
+include README.rst LICENSE
+recursive-include cswconfig/settings *.xml *.html *.properties *.ini
+recursive-include cswconfig/templates *.xml *.html *.properties *.ini
