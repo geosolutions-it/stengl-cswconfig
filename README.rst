@@ -41,6 +41,7 @@ To setup your project using a local python virtual environment, follow these ins
 
   .. code:: bash
 
+    pip install -r requirements.txt --upgrade
     pip install -e . --upgrade
 
 Usage Examples
