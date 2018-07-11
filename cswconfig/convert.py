@@ -263,8 +263,9 @@ if __name__ == "__main__":
     if iso_temporalend and not args.quiet:
         print("ISO Temporal End Extent: %s" % iso_temporalend)
 
+    record_identifier = slug2uuid(uuid2slug(_m.hexdigest()))
     ctx = {
-        "FILEIDENTIFIER": slug2uuid(uuid2slug(_m.hexdigest())),
+        "FILEIDENTIFIER": record_identifier,
         "TITLE": slugify.slugify(os.path.splitext(os.path.basename(args.filename))[0],
                                  separator=' ',
                                  capitalize=True),
@@ -305,7 +306,7 @@ if __name__ == "__main__":
                 if not args.quiet:
                     print("Streaming to CSW Server throguh %s" % _output)
 
-            _output.stream(final_xml_record)
+            _output.stream(final_xml_record, record_id=record_identifier)
         else:
             if not args.quiet:
                 print("Could not find a suitable Output Stream!")

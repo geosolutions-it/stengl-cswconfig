@@ -24,7 +24,7 @@ class BaseOutput(object):
     def type(cls):
         raise NotImplemented
 
-    def stream(self, buffer):
+    def stream(self, buffer, record_id=None):
         raise NotImplemented
 
 
@@ -37,8 +37,11 @@ class FileOutput(BaseOutput):
     def type(cls):
         return 'FILE'
 
-    def stream(self, buffer):
-        with open(self._dest_file, "w") as text_file:
+    def stream(self, buffer, record_id=None):
+        _dest_file = self._dest_file
+        if record_id:
+            _dest_file = _dest_file.format(record_id)
+        with open(_dest_file, "w") as text_file:
             text_file.write(buffer)
 
     def __str__(self):
@@ -63,7 +66,7 @@ class CSWOutput(BaseOutput):
     def type(cls):
         return 'CSW'
 
-    def stream(self, buffer):
+    def stream(self, buffer, record_id=None):
         self._csw.transaction(ttype='insert', typename='gmd:MD_Metadata', record=buffer)
 
     def __str__(self):
