@@ -23,7 +23,40 @@ If you are facing one or more of the following:
  * TODO,
  * TODO,
 
-TODO
+ Setup the virtual environment
+ -----------------------------
+
+ To setup your project using a local python virtual environment, follow these instructions:
+
+ 1. Prepare the Environment
+
+   .. code:: bash
+
+     git clone https://github.com/geosolutions-it/stengl-cswconfig.git -b master
+     mkvirtualenv stengl
+
+     cd stengl-cswconfig
+
+ 2. Setup the Python Dependencies
+
+   .. code:: bash
+
+     pip install -e . --upgrade
+
+Usage Examples
+--------------
+
+From the folder `cd stengl-cswconfig`
+
+Edit the templates and settings `cswconfig/settings/settings.ini`
+
+.. code:: bash
+
+ python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output FILE
+
+.. code:: bash
+
+ python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output CSW
 
 Contributing
 ------------
@@ -46,16 +79,3 @@ Requirements
 * awesome-slugify == 1.6.5
 * python-dateutil == 2.7.3
 * pygdal == 2.2.1.3
-
-Examples
---------
-
-Edit the templates and settings.
-
-.. code:: bash
-
-    python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output FILE
-
-.. code:: bash
-
-    python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output CSW

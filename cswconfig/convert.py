@@ -23,70 +23,11 @@ import ConfigParser
 
 from jinja2 import Environment, FileSystemLoader
 from osgeo import ogr
+from cswconfig.output import BaseOutput
 
 _m = hashlib.md5()
 
 config = ConfigParser.ConfigParser()
-
-
-class BaseOutput(object):
-
-    @classmethod
-    def _get_output(cls, type):
-        _sub_classes = [clazz for clazz in cls.__subclasses__()]
-        for _clz in _sub_classes:
-            if _clz.type() == type:
-                return _clz()  # initialize here
-        return None
-
-    @classmethod
-    def type(cls):
-        raise NotImplemented
-
-    def stream(self, buffer):
-        raise NotImplemented
-
-
-class FileOutput(BaseOutput):
-
-    def __init__(self):
-        self._dest_file = config.get(self.__class__.__name__, 'dest_file')
-
-    @classmethod
-    def type(cls):
-        return 'FILE'
-
-    def stream(self, buffer):
-        with open(self._dest_file, "w") as text_file:
-            text_file.write(buffer)
-
-    def __str__(self):
-        return "File Output Stream"
-
-
-class CSWOutput(BaseOutput):
-
-    def __init__(self):
-        self._csw_url = config.get(self.__class__.__name__, 'csw_url')
-        
-        self._csw_usr = config.get(self.__class__.__name__, 'csw_usr') if \
-            config.has_option(self.__class__.__name__, 'csw_usr') else None
-
-        self._csw_pwd = config.get(self.__class__.__name__, 'csw_pwd') if \
-            config.has_option(self.__class__.__name__, 'csw_pwd') else None
-
-        from owslib.csw import CatalogueServiceWeb
-        self._csw = CatalogueServiceWeb(url=self._csw_url, skip_caps=True)
-
-    @classmethod
-    def type(cls):
-        return 'CSW'
-
-    def stream(self, buffer):
-        self._csw.transaction(ttype='insert', typename='gmd:MD_Metadata', record=buffer)
-
-    def __str__(self):
-        return "CSW Output Stream"
 
 
 def is_valid_file(parser, arg):
@@ -355,7 +296,7 @@ if __name__ == "__main__":
     if not args.output:
         print(final_xml_record)
     else:
-        _output = BaseOutput._get_output(args.output)
+        _output = BaseOutput._get_output(args.output, config)
         if _output:
             if args.output == 'FILE':
                 if not args.quiet:
