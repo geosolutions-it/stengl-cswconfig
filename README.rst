@@ -23,25 +23,25 @@ If you are facing one or more of the following:
  * TODO,
  * TODO,
 
- Setup the virtual environment
- -----------------------------
+Setup the virtual environment
+-----------------------------
 
- To setup your project using a local python virtual environment, follow these instructions:
+To setup your project using a local python virtual environment, follow these instructions:
 
- 1. Prepare the Environment
+1. Prepare the Environment
 
-   .. code:: bash
+  .. code:: bash
 
-     git clone https://github.com/geosolutions-it/stengl-cswconfig.git -b master
-     mkvirtualenv stengl
+    git clone https://github.com/geosolutions-it/stengl-cswconfig.git -b master
+    mkvirtualenv stengl
 
-     cd stengl-cswconfig
+    cd stengl-cswconfig
 
- 2. Setup the Python Dependencies
+2. Setup the Python Dependencies
 
-   .. code:: bash
+  .. code:: bash
 
-     pip install -e . --upgrade
+    pip install -e . --upgrade
 
 Usage Examples
 --------------
