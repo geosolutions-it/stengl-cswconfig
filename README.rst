@@ -52,11 +52,11 @@ Edit the templates and settings `cswconfig/settings/settings.ini`
 
 .. code:: bash
 
- python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output FILE
+ python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Description of the dataset" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output FILE
 
 .. code:: bash
 
- python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Tanto va la gatta al lardo che ci lascia lo zampino!" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output CSW
+ python cswconfig/convert.py -f /mnt/d/data/gisdata/data/good/vector/san_andres_y_providencia_administrative.shp --abstract "Description of the dataset" --datadate "2018-07-10 13:43:22" --timezone "Europe/Rome" --topic-category "boundaries" --temporalstart "2017-01-01" --temporalend "2020-01-01" --output CSW
 
 Contributing
 ------------
