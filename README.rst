@@ -84,4 +84,4 @@ Requirements
 * awesome-slugify == 1.6.5
 * python-dateutil == 2.7.3
 * pytz==2018.3
-* pygdal == 2.2.1.3
+* pygdal == (the version depends on your GDAL bin installed on the system)
