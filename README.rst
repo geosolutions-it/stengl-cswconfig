@@ -41,6 +41,10 @@ To setup your project using a local python virtual environment, follow these ins
 
   .. code:: bash
 
+    GDAL_VERSION=`gdal-config --version` && \
+      PYGDAL_VERSION="$(pip install pygdal==$GDAL_VERSION 2>&1 | grep -oP '(?<=: )(.*)(?=\))' | grep -oh $GDAL_VERSION\.[0-9])" && \
+      pip install pygdal==$PYGDAL_VERSION
+
     pip install -r requirements.txt --upgrade
     pip install -e . --upgrade
 
