@@ -35,6 +35,9 @@ To setup your project using a local python virtual environment, follow these ins
     git clone https://github.com/geosolutions-it/stengl-cswconfig.git -b master
     mkvirtualenv stengl
 
+    pip install --upgrade pip
+    pip install --upgrade setuptools
+
     cd stengl-cswconfig
 
 2. Setup the Python Dependencies
