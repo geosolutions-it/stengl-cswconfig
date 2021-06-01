@@ -17,4 +17,4 @@ Shapely==1.5.17
 simplejson==3.13.2
 six==1.11.0
 Unidecode==0.4.21
-urllib3==1.22
+urllib3==1.26.5
